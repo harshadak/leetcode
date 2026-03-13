@@ -3,6 +3,7 @@ Leetcode Problem 496: Next Greater Element I
 https://leetcode.com/problems/next-greater-element-i/
 */
 
+// Solution I
 var nextGreaterElement = function (nums1, nums2) {
     let stack = [];
     let obj = {};
@@ -32,4 +33,31 @@ var nextGreaterElement = function (nums1, nums2) {
     }
 
     return res;
+};
+
+// Solution II
+var nextGreaterElement = function (nums1, nums2) {
+    const numObj = {};
+    const ans = [];
+    const stack = [];
+
+    for (const num of nums2) {
+
+        while (stack.length > 0 && num > stack[stack.length - 1]) {
+            const top = stack.pop();
+            numObj[top] = num;
+        }
+
+        stack.push(num);
+    }
+
+    for (const s of stack) {
+        numObj[s] = -1;
+    }
+
+    for (const num of nums1) {
+        ans.push(numObj[num]);
+    }
+
+    return ans;
 };
