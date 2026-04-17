@@ -17,7 +17,6 @@ var minCostClimbingStairs = function (cost) {
 };
 
 // Without using an array O(1) space complexity solution
-
 var minCostClimbingStairs = function (cost) {
     let prev2 = cost[0];
     let prev1 = cost[1];
